@@ -28,26 +28,19 @@ app.use('/api/challenges', challengesRoutes);
 app.use('/api/user', userRoutes);
 app.use(authRoutes);
 
-// app.get('*', (req, res) => {
-//   res.send('Uh oh get slammed');
-// });
+if (process.env.NODE_ENV === 'development') {
+  app.get('*', (req, res) => {
+    res.send('Move back to localhost:3000');
+  });
+}
 
-// app.use(express.static('client/build'));
-app.set('views', path.join(__dirname, 'client', 'build'));
-app.engine('html', require('ejs').renderFile);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-// });
-
-app.use(
-  '/static',
-  express.static(path.join(__dirname, 'client', 'build', 'static'))
-);
-
-app.get('/', function (req, res) {
-  res.render('index.html', { PORT });
-});
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

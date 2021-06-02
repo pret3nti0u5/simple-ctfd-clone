@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../assets/transparent.png';
+const base_URI =
+  process.env.NODE_ENV === 'production'
+    ? 'https://simple-ctfd-clone.herokuapp.com/'
+    : 'http://localhost:5000';
 
 class Navbar extends React.Component {
   state = { clicked: false };
   renderButton() {
     if (this.props.isSignedIn) {
       return (
-        <a
-          href={`http://localhost:${window.PORT}/logout`}
-          className='button is-danger'>
+        <a href={`${base_URI}/logout`} className='button is-danger'>
           <strong>Log Out</strong>
           <span className='icon'>
             <i className='fab fa-google'></i>
@@ -19,9 +21,7 @@ class Navbar extends React.Component {
       );
     }
     return (
-      <a
-        href={`http://localhost:${window.PORT}/login`}
-        className='button is-danger'>
+      <a href={`${base_URI}/login`} className='button is-danger'>
         <strong>Log in</strong>
         <span className='icon'>
           <i className='fab fa-google'></i>

@@ -24,7 +24,11 @@ passport.use(
     {
       clientID: process.env.clientID,
       clientSecret: process.env.clientSecret,
-      callbackURL: `http://localhost:${process.env.PORT}/login/callback`,
+      callbackURL: `${
+        process.env.NODE_ENV === production
+          ? 'https://simple-ctfd-clone.herokuapp.com/login/callback'
+          : '/login/callback'
+      }`,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
