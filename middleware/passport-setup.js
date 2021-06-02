@@ -25,7 +25,7 @@ passport.use(
       clientID: process.env.clientID,
       clientSecret: process.env.clientSecret,
       callbackURL: `${
-        process.env.NODE_ENV === production
+        process.env.NODE_ENV === 'production'
           ? 'https://simple-ctfd-clone.herokuapp.com/login/callback'
           : '/login/callback'
       }`,
