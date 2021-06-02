@@ -31,7 +31,12 @@ class Challenges extends React.Component {
   }
 
   modalClose() {
-    this.setState({ modalOpen: false, modalCategory: null, modalIndex: null });
+    this.setState({
+      modalOpen: false,
+      modalCategory: null,
+      modalIndex: null,
+      flag: '',
+    });
     this.props.clearChallengeMsgs();
   }
 
