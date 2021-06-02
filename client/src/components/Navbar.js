@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import logo from '../assets/transparent.png';
 const base_URI =
   process.env.NODE_ENV === 'production'
-    ? 'https://simple-ctfd-clone.herokuapp.com/'
+    ? 'https://simple-ctfd-clone.herokuapp.com'
     : 'http://localhost:5000';
 
 class Navbar extends React.Component {
