@@ -26,7 +26,7 @@ router.post('/solution/:id', authCheck, async (req, res) => {
     const { id, flag } = req.body;
     const challenge = await Challenge.findOne({ _id, flag });
     if (!challenge) {
-      return res.status(400).send({ msg: 'Nope, shit out of luck!' });
+      return res.status(400).send({ msg: 'Nope, Try Again!' });
     }
     const user = await User.findById(id);
     await user.updateSolvedSet(challenge._id, challenge.score);
@@ -36,14 +36,14 @@ router.post('/solution/:id', authCheck, async (req, res) => {
   }
 });
 
-router.post('/', authCheck, async (req, res) => {
-  try {
-    const challenge = new Challenge(req.body);
-    await challenge.save();
-    res.status(201).send(challenge);
-  } catch (e) {
-    res.status(400).send({ msg: 'Bad Request!' });
-  }
-});
+// router.post('/', authCheck, async (req, res) => {
+//   try {
+//     const challenge = new Challenge(req.body);
+//     await challenge.save();
+//     res.status(201).send(challenge);
+//   } catch (e) {
+//     res.status(400).send({ msg: 'Bad Request!' });
+//   }
+// });
 
 module.exports = router;

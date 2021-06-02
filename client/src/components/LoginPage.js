@@ -2,6 +2,10 @@ import React from 'react';
 import './LoginPage.css';
 import { connect } from 'react-redux';
 import Spinner from './Spinner';
+const base_URI =
+  process.env.NODE_ENV === 'production'
+    ? 'https://simple-ctfd-clone.herokuapp.com'
+    : 'http://localhost:5000';
 
 class LoginPage extends React.Component {
   render() {
@@ -11,7 +15,7 @@ class LoginPage extends React.Component {
     return (
       <div className='content'>
         <h1 className='has-text-centered custom'>
-          <a href='http://localhost:5000/login'>Login</a>{' '}
+          <a href={`${base_URI}/login`}>Login</a>{' '}
           {`with your BITS
           Email-ID to ${this.props.welcomeText}`}
         </h1>

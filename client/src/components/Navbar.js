@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import logo from '../assets/transparent.png';
+import logo from '../assets/simple-ctfd-clone-logo-navbar.png';
 const base_URI =
   process.env.NODE_ENV === 'production'
     ? 'https://simple-ctfd-clone.herokuapp.com'

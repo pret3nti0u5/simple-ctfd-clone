@@ -28,9 +28,9 @@ app.use('/api/challenges', challengesRoutes);
 app.use('/api/user', userRoutes);
 app.use(authRoutes);
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === undefined) {
   app.get('*', (req, res) => {
-    res.send('Move back to localhost:3000');
+    res.redirect('http://localhost:3000');
   });
 }
 
@@ -41,6 +41,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+console.log(process.env.NODE_ENV);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
