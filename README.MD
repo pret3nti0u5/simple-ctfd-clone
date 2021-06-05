@@ -10,7 +10,7 @@
 git clone https://github.com/pret3nti0u5/simple-ctfd-clone.git
 cd simple-ctfd-clone
 npm i                   #Install server side dependencies
-npm client-install      #Install client side dependencies
+npm run client-install      #Install client side dependencies
 npm run dev             #You will have to setup all the required env variable in ./config/dev.env for this to work perfectly 
 ```
 This will start the client server on localhost on port 3000 and the express server on port 5000.
