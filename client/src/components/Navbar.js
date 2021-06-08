@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import './Navbar.css';
 import logo from '../assets/simple-ctfd-clone-logo-navbar.png';
 const base_URI =
   process.env.NODE_ENV === 'production'
@@ -39,7 +40,9 @@ class Navbar extends React.Component {
           </Link>
           <button
             onClick={() => this.setState({ clicked: !this.state.clicked })}
-            className={`navbar-burger ${this.state.clicked ? 'is-active' : ''}`}
+            className={`navbar-burger darkBg noBorder ${
+              this.state.clicked ? 'is-active' : ''
+            }`}
             aria-label='menu'
             aria-expanded='false'
             data-target='navbarBasicExample'>
