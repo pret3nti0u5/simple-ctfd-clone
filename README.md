@@ -2,6 +2,10 @@
 
 ### This a simple clone of [CTFd](https://github.com/CTFd/CTFd) framework implemented using the MERN Stack.
 
+<br/>
+<div align="center"><img src="https://user-images.githubusercontent.com/57453561/121484475-e23c4e80-c9ec-11eb-8b44-f6665ab91667.png" alt="image" width="1000" /></div>
+<br/>
+
 ## Getting Started
 
 ### Development
