@@ -60,7 +60,7 @@ docker-compose exec -w /usr/src/node_server node_server npm install --save <pack
 docker-compose exec -w /usr/src/react_server react_server npm install --save <package name> #Install npm package for react-dev-server
 ```
 
-Once done developing, you can clean up running container and networks using:
+Once done developing, you can clean up running containers and networks using:
 
 ```zsh
 docker-compose down
