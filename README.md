@@ -9,6 +9,10 @@
 
 ### Development
 
+#### Using Host Modules
+
+This method requires `node version 12+` and `npm version 6.4+` installed on your machine.
+
 ```zsh
 git clone https://github.com/pret3nti0u5/simple-ctfd-clone.git
 cd simple-ctfd-clone
@@ -17,15 +21,49 @@ npm run client-install  #Install client side dependencies
 npm run dev             #You will have to setup all the required env variable in ./config/dev.env for this to work perfectly
 ```
 
-This will start the client server on localhost on port 3000 and the express server on port 5000.
+This will start the react-dev-server on localhost on `port:3000` and the node-backend-server on `port:5000`.
 You will have to setup your env variables in ./config/dev.env, which includes the server port.
 
-You can also run the client server and express server separately using the following commands
+You can also run the react-dev-server and node-backend-server separately using the following commands
 
 ```zsh
-npm run server #Run backend server on port 5000 using nodemon (auto server restart on code change)
-npm run start #Run backend server on port 5000 using node (no auto reload)
-npm run client #Run client server on port 3000
+npm run server #Start node-backend-server on port 5000 using nodemon (auto server restart on code change)
+npm run start  #Start node-backend-server on port 5000 using node (no auto reload)
+npm run client #Start react-dev-server on port 3000
+```
+
+#### Using Docker Container Modules
+
+This method only requires that you have the `Docker engine` and `docker-compose` installed on your machine.
+
+- Added benefits to this method other than the ones that docker already provides is you are not confined to developing in the docker container. You can also develop using your local modules as defined above.
+- Before spinning up your docker containers you will need to go to `./client/package.json` and change `proxy` from `http://localhost:5000` to `http://node_server:5000`.
+
+```zsh
+docker-compose up  #Starts the react-dev-server on localhost:3000 and node-server on localhost:5000
+```
+
+This will start the react-dev-server on localhost on `port:3000` and the node-backend-server on `port:5000`.
+You will have to setup your env variables in ./config/dev.env, which includes the server port.
+
+You can even run it detached in the background using the -d option.
+
+```zsh
+docker-compose up -d
+docker-compose logs  #To view server logs
+```
+
+npm packages for the frontend or backend can be installed using `docker-compose exec`
+
+```zsh
+docker-compose exec -w /usr/src/node_server node_server npm install --save <package name>  #Install npm package for node-backend-server
+docker-compose exec -w /usr/src/react_server react_server npm install --save <package name> #Install npm package for react-dev-server
+```
+
+Once done developing, you can clean up running container and networks using:
+
+```zsh
+docker-compose down
 ```
 
 ### Production
